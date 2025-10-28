@@ -14,8 +14,14 @@ process.env.npm_config_target_platform = 'darwin';
 process.env.npm_config_target_arch = 'arm64';
 
 // Verify platform before proceeding
-if (process.platform !== 'darwin' || process.arch !== 'arm64') {
-  console.warn('⚠️  Platform mismatch detected. Expected darwin/arm64, got:', process.platform, process.arch);
+if (process.platform !== 'darwin') {
+  console.warn('⚠️  Platform mismatch detected. Expected darwin, got:', process.platform);
+}
+
+// For Apple Silicon Macs, we should use arm64, but also handle x64 compatibility
+const expectedArch = process.arch === 'arm64' ? 'arm64' : 'x64';
+if (process.arch !== expectedArch) {
+  console.log('ℹ️  Architecture:', process.arch, '- using:', expectedArch);
 }
 
 try {

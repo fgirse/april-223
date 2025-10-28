@@ -30,7 +30,17 @@ const nextConfig = {
       config.externals.push({
         sharp: 'commonjs sharp'
       });
+      
+      // Prevent webpack from trying to bundle Sharp
+      config.resolve = config.resolve || {};
+      config.resolve.alias = config.resolve.alias || {};
+      config.resolve.alias.sharp = require.resolve('sharp');
     }
+    
+    // Set platform-specific configuration
+    config.resolve = config.resolve || {};
+    config.resolve.fallback = config.resolve.fallback || {};
+    
     return config;
   },
 };
