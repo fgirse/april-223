@@ -4,7 +4,7 @@ import CocktailIcon from "../components/Cloudinary/cocktailIcon";
 import { Grid, Container } from "lucide-react";
 import Image from "next/image";
 import LogoNeu from "../public/LogoNeu.png";
-import Astra from "../public/astra.jpg";
+import Astra from "../public/astraglaswbg.png";
 
 
 export default function Bento() {
